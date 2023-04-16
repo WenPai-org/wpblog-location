@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WPSite Location
-Plugin URI: https://wpsite.cn/location
+Plugin Name: WPblog Location
+Plugin URI: https://wpblog.cn/location
 Description: Display user account IP address information in comments and articles.
 Version: 1.0
-Author: WPSite.cn
-Author URI: https://wpsite.cn
+Author: WPblog.cn
+Author URI: https://wpblog.cn
 License: GPL2
 */
 
