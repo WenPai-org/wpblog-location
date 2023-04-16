@@ -1,12 +1,23 @@
 <?php
 /*
-Plugin Name: WPblog Location
-Plugin URI: https://wpblog.cn/location
-Description: Display user account IP address information in comments and articles.
-Version: 1.0
-Author: WPblog.cn
-Author URI: https://wpblog.cn
-License: GPL2
+* Plugin Name: WPblog Location
+* Plugin URI: https://wpblog.cn/location
+* Description: Display user account IP address information in comments and articles.
+* Version: 1.0
+* Author: WPblog.cn
+* Author URI: https://WPblog.cn
+* License: GPLv2 or later
+* License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*
+* WP blog Location is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 2 of the License, or
+* any later version.
+*
+* WP blog Location is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
 */
 
 
