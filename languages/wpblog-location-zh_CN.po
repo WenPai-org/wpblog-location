@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WPblog Location\n"
-"POT-Creation-Date: 2023-04-17 23:13+0800\n"
-"PO-Revision-Date: 2023-04-17 23:14+0800\n"
+"POT-Creation-Date: 2023-04-17 23:22+0800\n"
+"PO-Revision-Date: 2023-04-17 23:23+0800\n"
 "Last-Translator: 薇晓朵 <support@weixiaoduo.com>\n"
 "Language-Team: 薇晓朵 <support@weixiaoduo.com>\n"
 "Language: zh_CN\n"
@@ -49,6 +49,10 @@ msgstr "在文章页面上显示作者位置"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "您没有足够的权限访问此页面。"
 
+#: wpblog-location.php:95
+msgid "Settings saved."
+msgstr "设置已保存。"
+
 #: wpblog-location.php:106
 msgid "WordPress Blog User IP address attribution"
 msgstr "文派博客用户IP地址属地"
@@ -86,8 +90,8 @@ msgid "WPblog Location"
 msgstr "文派博客位置"
 
 #. Plugin URI of the plugin/theme
-msgid "https://wpblog.cn/location"
-msgstr "https://wpblog.cn/location"
+msgid "https://wpblog.cn/download"
+msgstr "https://wpblog.cn/download"
 
 #. Description of the plugin/theme
 msgid ""

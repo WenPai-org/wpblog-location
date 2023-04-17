@@ -92,7 +92,7 @@ function wpblog_location_settings_page() {
 
         update_option('wpblog_location_display_info', $_POST['wpblog_location_display_info']);
         // Display success message
-        echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>Settings saved.</strong></p></div>';
+        echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>' . esc_html__( 'Settings saved.', 'wpblog-location' ) . '</strong></p></div>';
     }
 
     // Get current options

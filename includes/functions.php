@@ -89,7 +89,7 @@ function wpblog_location_shortcode($atts) {
         return '';
     }
 }
-add_shortcode( 'wpblog-location', 'wpblog_location_shortcode' );
+add_shortcode( 'wpblog_location', 'wpblog_location_shortcode' );
 
 
 // Add a shortcode to show the post author location
