@@ -3,9 +3,11 @@
 * Plugin Name: WPblog Location
 * Plugin URI: https://wpblog.cn/location
 * Description: Display user account IP address information in comments and articles.
-* Version: 1.0
 * Author: WPfanyi
 * Author URI: https://wpfanyi.com
+* Text Domain: wpblog-location
+* Domain Path: /languages
+* Version: 1.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 *
@@ -36,6 +38,15 @@ function wpblog_location_enqueue_css() {
     wp_enqueue_style( 'wpblog_location_css', plugin_dir_url( __FILE__ ) . 'assets/css/location.css' );
     wp_enqueue_style( 'dashicons' );
 }
+
+
+// Load translation
+add_action( 'init', 'wpblog_load_textdomain' );
+function wpblog_load_textdomain() {
+	load_plugin_textdomain( 'wpblog-location', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+
 
 // Add settings page to WordPress admin menu
 add_action( 'admin_menu', 'wpblog_location_add_settings_page' );
