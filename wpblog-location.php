@@ -1,8 +1,8 @@
 <?php
 /*
 * Plugin Name: WPblog Location
-* Plugin URI: https://wpblog.cn/location
-* Description: Display user account IP address information in comments and articles.
+* Plugin URI: https://wpblog.cn/download
+* Description: Display user account IP address attribution information in comments and articles.
 * Author: WPfanyi
 * Author URI: https://wpfanyi.com
 * Text Domain: wpblog-location
@@ -47,13 +47,12 @@ function wpblog_load_textdomain() {
 }
 
 
-
 // Add settings page to WordPress admin menu
 add_action( 'admin_menu', 'wpblog_location_add_settings_page' );
 function wpblog_location_add_settings_page() {
     add_options_page(
-        __( 'Location Settings', 'wpblog_location' ), // Page title
-        __( 'Location', 'wpblog_location' ), // Menu name
+        __( 'IP Location Settings', 'wpblog-location' ), // Page title
+        __( 'IP Location', 'wpblog-location' ), // Menu name
         'manage_options', // User capability
         'wpblog-location', // Page ID
         'wpblog_location_settings_page' // Callback function
@@ -61,7 +60,7 @@ function wpblog_location_add_settings_page() {
     // Add new settings field to control author location display
     add_settings_field(
         'wpblog_location_show_author_location', // Field ID
-        __( 'Show author location on post pages', 'wpblog_location' ), // Field title
+        __( 'Show author location on post pages', 'wpblog-location' ), // Field title
         'wpblog_location_show_author_location_callback', // Callback function
         'wpblog_location_settings', // Settings page ID
         'wpblog_location_section' // Settings page section ID
@@ -79,7 +78,7 @@ function wpblog_location_show_author_location_callback() {
 function wpblog_location_settings_page() {
     // Check user permissions
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wpblog_location' ) );
+        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wpblog-location' ) );
     }
 
     // Handle form submission
@@ -104,23 +103,23 @@ function wpblog_location_settings_page() {
 ?>
 <div class="wrap">
     <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-    <h2><?php esc_html_e( 'WordPress Blog Location Settings', 'wpblog_location' ); ?></h2>
-    <p><?php esc_html_e( '1. Display WordPress user IP and city location information', 'wpblog_location' ); ?> <a href="https://wpblog.cn" target="_blank" rel="noopener">WPblog.cn</a>.</p>
-    <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog_location' ); ?> <code>[wpblog_location]</code> <code>[wpblog_author_location]</code> </p>
+    <h2><?php esc_html_e( 'WordPress Blog User IP address attribution', 'wpblog-location' ); ?></h2>
+    <p><?php esc_html_e( '1. Display WordPress user IP address attribution and city location information, More information at', 'wpblog-location' ); ?> <a href="https://wpblog.cn" target="_blank" rel="noopener">WPblog.cn</a></p>
+    <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog-location' ); ?> <code>[wpblog_location]</code> <code>[wpblog_author_location]</code> </p>
     <form method="post" action="">
         <table class="form-table">
             <tbody>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Post/pages', 'wpblog_location' ); ?></th>
-                    <td><label><input type="checkbox" name="show_post_location" value="1" <?php checked( $show_post_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog_location' ); ?></label></td>
+                    <th scope="row"><?php esc_html_e( 'Post/pages', 'wpblog-location' ); ?></th>
+                    <td><label><input type="checkbox" name="show_post_location" value="1" <?php checked( $show_post_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-location' ); ?></label></td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Comments', 'wpblog_location' ); ?></th>
-                    <td><label><input type="checkbox" name="show_comment_location" value="1" <?php checked( $show_comment_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog_location' ); ?></label></td>
+                    <th scope="row"><?php esc_html_e( 'Comments', 'wpblog-location' ); ?></th>
+                    <td><label><input type="checkbox" name="show_comment_location" value="1" <?php checked( $show_comment_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-location' ); ?></label></td>
                 </tr>
             </tbody>
         </table>
-        <?php submit_button( __( 'Save Changes', 'wpblog_location' ), 'primary', 'wpblog_location_save_settings' ); ?>
+        <?php submit_button( __( 'Save Changes', 'wpblog-location' ), 'primary', 'wpblog_location_save_settings' ); ?>
     </form>
 </div>
 <?php

@@ -48,7 +48,7 @@ if (!function_exists('wpblog_location_handle_post_content')) {
         $show_author_location = get_option('wpblog_location_show_author_location', false);
 
         if ($show_author_location && get_post_meta($post->ID, 'wpblog_location_ip', true)) {
-            $location_info = '<div class="post-author-location"><span class="dashicons dashicons-location"></span>' . __('Author from', 'wpblog_location') . '' . get_user_city(get_post_meta($post->ID, 'wpblog_location_ip', true)) . '</div>';
+            $location_info = '<div class="post-author-location"><span class="dashicons dashicons-location"></span>' . __('Author from', 'wpblog-location') . '' . get_user_city(get_post_meta($post->ID, 'wpblog_location_ip', true)) . '</div>';
             $content = $location_info . $content;
         }
 
@@ -64,7 +64,7 @@ function wpblog_location_handle_post_content_end($content) {
     $show_post_location = get_option('wpblog_location_show_post_location', false);
 
     if (get_option('wpblog_location_show', true) && get_post_meta($post->ID, 'wpblog_location_ip', true) && $show_post_location) {
-       $location_info = '<div class="post-author-location"><span class="dashicons dashicons-location"></span>' . __('Author from', 'wpblog_location') . '' . get_user_city(get_post_meta($post->ID, 'wpblog_location_ip', true)) . '</div>';
+       $location_info = '<div class="post-author-location"><span class="dashicons dashicons-location"></span>' . __('Author from', 'wpblog-location') . '' . get_user_city(get_post_meta($post->ID, 'wpblog_location_ip', true)) . '</div>';
     }
 
     return $content . $location_info;
@@ -83,13 +83,13 @@ function wpblog_location_shortcode($atts) {
     $ip = $a['ip'] ? $a['ip'] : filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_VALIDATE_IP);
     $city = get_user_city($ip);
     if ($city) {
-        return '<div class="post-comment-location"><span class="dashicons dashicons-location"></span>' . esc_html__( 'From', 'wpblog_location' ) . '' . $city . '</div>';
+        return '<div class="post-comment-location"><span class="dashicons dashicons-location"></span>' . esc_html__( 'From', 'wpblog-location' ) . '' . $city . '</div>';
 
     } else {
         return '';
     }
 }
-add_shortcode( 'wpblog_location', 'wpblog_location_shortcode' );
+add_shortcode( 'wpblog-location', 'wpblog_location_shortcode' );
 
 
 // Add a shortcode to show the post author location
@@ -98,7 +98,7 @@ function wpblog_author_location_shortcode() {
     $city = get_user_city($ip);
 
     if ($city) {
-        return '<div class="post-author-location"><span class="dashicons dashicons-location"></span>' . esc_html__( 'Author From', 'wpblog_location' ) . '' . $city . '</div>';
+        return '<div class="post-author-location"><span class="dashicons dashicons-location"></span>' . esc_html__( 'Author From', 'wpblog-location' ) . '' . $city . '</div>';
     } else {
         return '';
     }
