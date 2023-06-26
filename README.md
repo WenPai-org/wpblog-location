@@ -1,4 +1,4 @@
-# wpblog-post 之前叫（wpblog-post）
+# wpblog-post 之前叫（wpblog-location）
 Display user account IP address information in comments and articles.
 
 
