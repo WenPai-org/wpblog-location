@@ -1,4 +1,4 @@
-=== WPBlog Location ===
+=== WPblog Post ===
 Contributors: wpfanyi
 Tags: IP, IP location, location, 定位, 地理位置
 Requires at least: 5.4
@@ -16,11 +16,11 @@ This plugin is free forever, and its purpose is to supplement the essential func
 More information at [https://wpblog.cn](https://wpblog.cn)
 
 
-How to use the WPBlog Location:
+How to use the WPblog Post:
 
 **1.Setting**
 
-You can use the [wpicp_license] shortcode to display ICP anywhere, usually the Ministry of Industry and Information Technology of China requires it to be displayed on the homepage of the website.
+You can use the [wpblog_post_location] shortcode to display ICP anywhere, usually the Ministry of Industry and Information Technology of China requires it to be displayed on the homepage of the website.
 
 
 **2.IP Database**
@@ -45,7 +45,7 @@ We are the first WordPress agency in China, Welcome to China and nice to meet yo
 
 ### Found a bug in this plugin? ###
 
-Please submit issues here: [https://github.com/WenPai-org/wpblog-location/issues](https://github.com/WenPai-org/wpblog-location/issues), we will fix it in the next version, thank you for your feedback!
+Please submit issues here: [https://github.com/WenPai-org/wpblog-post/issues](https://github.com/WenPai-org/wpblog-post/issues), we will fix it in the next version, thank you for your feedback!
 
 == Installation ==
 
@@ -54,8 +54,8 @@ Starting with WP Blog Location consists of just two steps: installing and settin
 ###Install WP Blog Location form within WordPress###
 
 1. Visit the plugins page within your dashboard and select ‘Add New’;
-2. Search for ‘WPBlog Location’;
-3. Activate WPBlog Location from your Plugins page;
+2. Search for ‘WPblog Post’;
+3. Activate WPblog Post from your Plugins page;
 4. Go to ‘after activation’ below.
 
 

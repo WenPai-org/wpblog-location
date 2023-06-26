@@ -1,4 +1,4 @@
-# wpblog-post 之前叫（wpblog-location）
+# wpblog-post 之前叫（wpblog-post）
 Display user account IP address information in comments and articles.
 
 
@@ -9,7 +9,7 @@ Display user account IP address information in comments and articles.
 目前此插件除了默认在后台可以设置是否显示 IP 属地外，还提供了两个简码可自行调用以便在需要的位置进行显示：
 
 可显示评论者 IP
-[wpblog_location] 
+[wpblog_post] 
 
 可显示作者 IP
 [wpblog_author_location]
