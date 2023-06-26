@@ -105,7 +105,7 @@ function wpblog_post_settings_page() {
     <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
     <h2><?php esc_html_e( 'WordPress Blog User IP address attribution', 'wpblog-post' ); ?></h2>
     <p><?php esc_html_e( '1. Display WordPress user IP address attribution and city location information, More information at', 'wpblog-post' ); ?> <a href="https://wpblog.cn" target="_blank" rel="noopener">WPblog.cn</a></p>
-    <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog-post' ); ?> <code>[wpblog_post]</code> <code>[wpblog_author_location]</code> </p>
+    <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog-post' ); ?> <code>[wpblog_post_location]</code> <code>[wpblog_author_location]</code> </p>
     <form method="post" action="">
         <table class="form-table">
             <tbody>
