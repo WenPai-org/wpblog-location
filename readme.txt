@@ -2,13 +2,13 @@
 Contributors: wpfanyi
 Tags: IP, IP location, location, 定位, 地理位置
 Requires at least: 5.4
-Tested up to: 6.2
+Tested up to: 6.2.2
 Requires PHP: 5.6
 Stable tag: 1.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin is free forever, and its purpose is to supplement the essential functions that the Chinese version of WordPress lacks.
+The website platform in China needs to display the user's IP address attribution information, and it must be accurate to the province and city.
 
 == Description ==
 ### Display user account IP address information in comments and articles. ###
@@ -20,8 +20,9 @@ How to use the WPblog Post:
 
 **1.Setting**
 
-You can use the [wpblog_post_location] shortcode to display ICP anywhere, usually the Ministry of Industry and Information Technology of China requires it to be displayed on the homepage of the website.
+You can use [wpblog_post_location] and [wpblog_author_location] shortcodes to customize the display IP location, usually the plug-in can be automatically inserted into the corresponding location of the article.
 
+This is also used as a reference basis for real users of the website.
 
 **2.IP Database**
 
