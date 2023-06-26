@@ -75,7 +75,7 @@ add_filter('the_content', 'wpblog_post_handle_post_content_end');
 
 
 // Add a shortcode to show the author location
-function wpblog_post_location_shortcode($atts) {
+function wpblog_post_shortcode($atts) {
     $a = shortcode_atts( array(
         'ip' => ''
     ), $atts );
@@ -89,7 +89,7 @@ function wpblog_post_location_shortcode($atts) {
         return '';
     }
 }
-add_shortcode( 'wpblog_post_location', 'wpblog_post_location_shortcode' );
+add_shortcode( 'wpblog_post_location', 'wpblog_post_shortcode' );
 
 
 // Add a shortcode to show the post author location
