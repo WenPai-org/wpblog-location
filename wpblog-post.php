@@ -27,16 +27,27 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+// All WP Blog Constant
+require plugin_dir_path( __FILE__ ) . 'includes/const/WpBlogConst.php';
 
 // Load required files
 require_once plugin_dir_path( __FILE__ ) . 'includes/Reader.php';
+require_once plugin_dir_path( __FILE__ ) . 'templates/WpBlogTemplate.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/functions.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/IpCheckerService.php';
 
 // Enqueue plugin CSS and dashicons CSS
 add_action( 'wp_enqueue_scripts', 'wpblog_post_enqueue_css' );
 function wpblog_post_enqueue_css() {
     wp_enqueue_style( 'wpblog_post_css', plugin_dir_url( __FILE__ ) . 'assets/css/location.css' );
     wp_enqueue_style( 'dashicons' );
+}
+
+// Enqueue plugin CSS and dashicons JS
+add_action( 'admin_menu', 'wpblog_post_enqueue_js' );
+function wpblog_post_enqueue_js() {
+    wp_register_script('custom-script', plugin_dir_url( __FILE__ ) . 'assets/js/wpblog-post.js');
+    wp_enqueue_script('custom-script');
 }
 
 
@@ -80,17 +91,45 @@ function wpblog_post_settings_page() {
     if ( ! current_user_can( 'manage_options' ) ) {
         wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wpblog-post' ) );
     }
-
+    
+    $allowIpCheckerArr = [
+        'local',
+        'ipapi',
+    ];
+    $addressFormatArr = [
+        'city',
+        'country, region, city',
+        'city, region, country',
+    ];
+    
     // Handle form submission
     if ( isset( $_POST['wpblog_post_save_settings'] ) ) {
         $show_post_location = isset($_POST['show_post_location']) ? true : false;
         $show_comment_location = isset($_POST['show_comment_location']) ? true : false;
         $show_author_location = isset($_POST['wpblog_post_show_author_location']) ? true : false;
+        $post_location_ip_checker = $_POST['ip_channel'] ?? WpBlogConst::WPBLOG_POST_DEFAULT_IP_CHECKER;
+
+        if ( ! empty( $_POST['ip_address_format'] ) && isset( $_POST['ip_address_format_custom'] )
+            && '\c\u\s\t\o\m' === wp_unslash( $_POST['ip_address_format'] )
+        ) {
+            $_POST['ip_address_format'] = $_POST['ip_address_format_custom'];
+        }
+        $post_location_ip_address_format = $_POST['ip_address_format']?? WpBlogConst::WPBLOG_POST_DEFAULT_IP_ADDRESS_FORMAT;
+
+        if ( ! empty( $_POST['ip_address_custom_for_admin'] ) && isset( $_POST['ip_address_custom_for_admin_cu'] )
+            && '\c\u\s\t\o\m' === wp_unslash( $_POST['ip_address_custom_for_admin'] )
+        ) {
+            $_POST['ip_address_custom_for_admin'] = $_POST['ip_address_custom_for_admin_cu'];
+        }
+        $ip_address_custom_for_admin = $_POST['ip_address_custom_for_admin'] ?? WpBlogConst::WPBLOG_POST_DEFAULT_FALSE;
+
         update_option('wpblog_post_show_author_location', $show_author_location);
         update_option('wpblog_post_show_post_location', $show_post_location);
         update_option('wpblog_post_show_comment_location', $show_comment_location);
+        update_option('wpblog_post_ip_checker', $post_location_ip_checker);
+        update_option('wpblog_post_ip_address_format', $post_location_ip_address_format);
+        update_option('wpblog_post_ip_address_custom_for_admin', $ip_address_custom_for_admin);
 
-        update_option('wpblog_post_display_info', $_POST['wpblog_post_display_info']);
         // Display success message
         echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>' . esc_html__( 'Settings saved.', 'wpblog-post' ) . '</strong></p></div>';
     }
@@ -98,6 +137,15 @@ function wpblog_post_settings_page() {
     // Get current options
     $show_post_location = get_option( 'wpblog_post_show_post_location', false );
     $show_comment_location = get_option( 'wpblog_post_show_comment_location', true );
+    $post_location_ip_checker = get_option( 'wpblog_post_ip_checker', WpBlogConst::WPBLOG_POST_DEFAULT_IP_CHECKER );
+    $post_location_ip_address_format = get_option(
+        'wpblog_post_ip_address_format',
+        WpBlogConst::WPBLOG_POST_DEFAULT_IP_ADDRESS_FORMAT
+    );
+    $ip_address_custom_for_admin = get_option(
+        'wpblog_post_ip_address_custom_for_admin',
+        WpBlogConst::WPBLOG_POST_DEFAULT_FALSE
+    );
 
     // Render HTML
 ?>
@@ -116,6 +164,79 @@ function wpblog_post_settings_page() {
                 <tr>
                     <th scope="row"><?php esc_html_e( 'Comments', 'wpblog-post' ); ?></th>
                     <td><label><input type="checkbox" name="show_comment_location" value="1" <?php checked( $show_comment_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-post' ); ?></label></td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php esc_html_e( 'IPChannel', 'wpblog-post' ); ?></th>
+                    <td>
+                    <?php foreach ($allowIpCheckerArr as $checker) : ?>
+                        <label style="margin-right: 20px;">
+                            <input type="radio" name="ip_channel" value="<?php echo esc_attr($checker); ?>" <?php checked($post_location_ip_checker, $checker); ?>>
+                            <?php esc_html_e('IPChannel-' . $checker, 'wpblog-post'); ?>
+                        </label>
+                    <?php endforeach; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php esc_html_e( 'IPAddressFormat', 'wpblog-post' ); ?></th>
+                    <td>
+                        <fieldset>
+                            <?php
+
+                            $custom = true;
+
+                            foreach ( $addressFormatArr as $format ) {
+                                echo "\t<label class='options-general-php'><input type='radio' name='ip_address_format' value='" .
+                                    esc_attr($format ) . "'";
+                                if ( $post_location_ip_address_format === $format ) {
+                                    echo " checked='checked'";
+                                    $custom = false;
+                                }
+                                echo ' /> <span class="date-time-text format-i18n">';
+                                esc_html_e( $format, 'wpblog-post' );
+                                echo '</span><code>' . $format . "</code></label><br />\n";
+                            }
+
+                            echo '<label><input type="radio" name="ip_address_format" id="ip_address_format_custom_radio" value="\c\u\s\t\o\m"';
+                            checked( $custom );
+                            echo '/> </label>' .
+                                '<input style="width: 140px" type="text" name="ip_address_format_custom" id="ip_address_format_custom" value="' .
+                                esc_attr( $post_location_ip_address_format ) .
+                                '" class="small-text" />' .
+                                '<br />';
+                            ?>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><?php esc_html_e( 'IPAddressCustomForAdmin', 'wpblog-post' ); ?></th>
+                    <td>
+                        <fieldset>
+                            <?php
+                            $custom_ip_address_admin = true;
+                            echo "\t<label class='options-general-php'><input type='radio' name='ip_address_custom_for_admin' value='";
+                            echo WpBlogConst::WPBLOG_POST_DEFAULT_FALSE."'";
+                            if ( $ip_address_custom_for_admin == WpBlogConst::WPBLOG_POST_DEFAULT_FALSE ) {
+                                echo " checked='checked'";
+                                $custom_ip_address_admin = false;
+                            }
+                            echo ' /> <span class="date-time-text format-i18n">';
+                            esc_html_e( WpBlogConst::WPBLOG_POST_DEFAULT_FALSE, 'wpblog-post' );
+                            echo "</span></label><br />\n";
+
+                            echo '<label><input type="radio" name="ip_address_custom_for_admin" id="ip_address_custom_for_admin_radio" value="\c\u\s\t\o\m"';
+                            checked( $custom_ip_address_admin );
+                            echo '/> </label>' .
+                                '<input style="width: 140px" type="text" name="ip_address_custom_for_admin_cu" id="ip_address_custom_for_admin_cu" value="' .
+                                esc_attr( $ip_address_custom_for_admin == WpBlogConst::WPBLOG_POST_DEFAULT_FALSE ? ''
+                                    : $ip_address_custom_for_admin ) .
+                                '" class="small-text" />';
+                            $ipAddressItemStr = esc_html__('Tips');
+                            echo "<code>";
+                            esc_html_e("ip_address_custom_for_admin_tips", 'wpblog-post');
+                            echo "</code><br />";
+                            ?>
+                        </fieldset>
+                    </td>
                 </tr>
             </tbody>
         </table>

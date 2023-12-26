@@ -109,3 +109,40 @@ msgstr "https://wpfanyi.com/"
 
 #~ msgid "WordPress Blog Location Settings"
 #~ msgstr "文派部落格位置設定"
+
+#. IP
+msgid "IPChannel"
+msgstr "IP查詢頻道"
+
+msgid "IPChannel-local"
+msgstr "本地資料庫"
+
+msgid "IPChannel-ipapi"
+msgstr "API"
+
+msgid "IPAddressFormat"
+msgstr "IP位址格式"
+
+msgid "city"
+msgstr "城市"
+
+msgid "country"
+msgstr "國家"
+
+msgid "region"
+msgstr "省份"
+
+msgid "country, region, city"
+msgstr "國家/地區, 省份, 城市"
+
+msgid "city, region, country"
+msgstr "城市, 省份, 國家/地區"
+
+msgid "IPAddressCustomForAdmin"
+msgstr "管理員自訂IP歸屬地"
+
+msgid "ip_address_custom_for_admin_tips"
+msgstr "例如：廣州, 廣東, 中國"
+
+msgid "f/a/l/s/e"
+msgstr "關閉"

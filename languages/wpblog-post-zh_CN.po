@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: includes/functions.php:23 includes/functions.php:86
+#: includes/functions.php:23 includes/functions.php:86 templates/WpBlogTemplate.php:26
 msgid "From"
 msgstr "来自"
 
@@ -109,3 +109,40 @@ msgstr "https://wpfanyi.com/"
 
 #~ msgid "WordPress Blog Location Settings"
 #~ msgstr "文派博客位置设置"
+
+#. IP
+msgid "IPChannel"
+msgstr "IP查询渠道"
+
+msgid "IPChannel-local"
+msgstr "本地数据库"
+
+msgid "IPChannel-ipapi"
+msgstr "API"
+
+msgid "IPAddressFormat"
+msgstr "IP地址格式"
+
+msgid "city"
+msgstr "城市"
+
+msgid "country"
+msgstr "国家/地区"
+
+msgid "region"
+msgstr "省份"
+
+msgid "country, region, city"
+msgstr "国家/地区, 省份, 城市"
+
+msgid "city, region, country"
+msgstr "城市, 省份, 国家/地区"
+
+msgid "IPAddressCustomForAdmin"
+msgstr "管理员自定义IP归属地"
+
+msgid "ip_address_custom_for_admin_tips"
+msgstr "例如：广州, 广东, 中国"
+
+msgid "f/a/l/s/e"
+msgstr "关闭"
