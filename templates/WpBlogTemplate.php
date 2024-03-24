@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 
 class WpBlogTemplate 
 {
-    static $tag = 'blog-location';
+    static $tag = 'wpblog-post';
 
     public static function return_post_author_location($city) 
     {
