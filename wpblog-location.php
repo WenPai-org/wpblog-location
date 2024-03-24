@@ -1,11 +1,11 @@
 <?php
 /*
-* Plugin Name: WPblog Post
+* Plugin Name: WPblog Location
 * Plugin URI: https://wpblog.cn/download
 * Description: Display user account IP address attribution information in comments and articles.
 * Author: WPfanyi
 * Author URI: https://wpfanyi.com
-* Text Domain: wpblog-post
+* Text Domain: wpblog-location
 * Domain Path: /languages
 * Version: 1.0
 * License: GPLv2 or later
@@ -46,7 +46,7 @@ function wpblog_post_enqueue_css() {
 // Enqueue plugin CSS and dashicons JS
 add_action( 'admin_menu', 'wpblog_post_enqueue_js' );
 function wpblog_post_enqueue_js() {
-    wp_register_script('custom-script', plugin_dir_url( __FILE__ ) . 'assets/js/wpblog-post.js');
+    wp_register_script('custom-script', plugin_dir_url( __FILE__ ) . 'assets/js/wpblog-location.js');
     wp_enqueue_script('custom-script');
 }
 
@@ -54,7 +54,7 @@ function wpblog_post_enqueue_js() {
 // Load translation
 add_action( 'init', 'wpblog_load_textdomain' );
 function wpblog_load_textdomain() {
-	load_plugin_textdomain( 'wpblog-post', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'wpblog-location', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
 
@@ -62,16 +62,16 @@ function wpblog_load_textdomain() {
 add_action( 'admin_menu', 'wpblog_post_add_settings_page' );
 function wpblog_post_add_settings_page() {
     add_options_page(
-        __( 'IP Location Settings', 'wpblog-post' ), // Page title
-        __( 'IP Location', 'wpblog-post' ), // Menu name
+        __( 'IP Location Settings', 'wpblog-location' ), // Page title
+        __( 'IP Location', 'wpblog-location' ), // Menu name
         'manage_options', // User capability
-        'wpblog-post', // Page ID
+        'wpblog-location', // Page ID
         'wpblog_post_settings_page' // Callback function
     );
     // Add new settings field to control author location display
     add_settings_field(
         'wpblog_post_show_author_location', // Field ID
-        __( 'Show author location on post pages', 'wpblog-post' ), // Field title
+        __( 'Show author location on post pages', 'wpblog-location' ), // Field title
         'wpblog_post_show_author_location_callback', // Callback function
         'wpblog_post_settings', // Settings page ID
         'wpblog_post_section' // Settings page section ID
@@ -89,11 +89,11 @@ function wpblog_post_show_author_location_callback() {
 function wpblog_post_settings_page() {
     // Check user permissions
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wpblog-post' ) );
+        wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wpblog-location' ) );
     }
 
     $nonce = 'wpblog-update-key';
-    
+
     $allowIpCheckerArr = [
         'local',
         'ipapi',
@@ -103,7 +103,7 @@ function wpblog_post_settings_page() {
         'country, region, city',
         'city, region, country',
     ];
-    
+
     // Handle form submission
     if ( isset( $_POST['wpblog_post_save_settings'] ) && isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], $nonce) ) {
         $show_post_location = isset($_POST['show_post_location']) ? true : false;
@@ -133,7 +133,7 @@ function wpblog_post_settings_page() {
         update_option('wpblog_post_ip_address_custom_for_admin', $ip_address_custom_for_admin);
 
         // Display success message
-        echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>' . esc_html__( 'Settings saved.', 'wpblog-post' ) . '</strong></p></div>';
+        echo '<div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"><p><strong>' . esc_html__( 'Settings saved.', 'wpblog-location' ) . '</strong></p></div>';
     }
 
     // Get current options
@@ -155,34 +155,34 @@ function wpblog_post_settings_page() {
 ?>
 <div class="wrap">
     <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-    <h2><?php esc_html_e( 'WordPress Blog User IP address attribution', 'wpblog-post' ); ?></h2>
-    <p><?php esc_html_e( '1. Display WordPress user IP address attribution and city location information, More information at', 'wpblog-post' ); ?> <a href="https://wpblog.cn" target="_blank" rel="noopener">WPblog.cn</a></p>
-    <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog-post' ); ?> <code>[wpblog_post_location]</code> <code>[wpblog_author_location]</code> </p>
+    <h2><?php esc_html_e( 'WordPress Blog User IP address attribution', 'wpblog-location' ); ?></h2>
+    <p><?php esc_html_e( '1. Display WordPress user IP address attribution and city location information, More information at', 'wpblog-location' ); ?> <a href="https://wpblog.cn" target="_blank" rel="noopener">WPblog.cn</a></p>
+    <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog-location' ); ?> <code>[wpblog_post_location]</code> <code>[wpblog_author_location]</code> </p>
     <form method="post" action="">
         <input type="hidden" name="_wpnonce" value="<?php echo $nonceStr; ?>"/>
         <table class="form-table">
             <tbody>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Post/pages', 'wpblog-post' ); ?></th>
-                    <td><label><input type="checkbox" name="show_post_location" value="1" <?php checked( $show_post_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-post' ); ?></label></td>
+                    <th scope="row"><?php esc_html_e( 'Post/pages', 'wpblog-location' ); ?></th>
+                    <td><label><input type="checkbox" name="show_post_location" value="1" <?php checked( $show_post_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-location' ); ?></label></td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'Comments', 'wpblog-post' ); ?></th>
-                    <td><label><input type="checkbox" name="show_comment_location" value="1" <?php checked( $show_comment_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-post' ); ?></label></td>
+                    <th scope="row"><?php esc_html_e( 'Comments', 'wpblog-location' ); ?></th>
+                    <td><label><input type="checkbox" name="show_comment_location" value="1" <?php checked( $show_comment_location, true ); ?>> <?php esc_html_e( 'Show location', 'wpblog-location' ); ?></label></td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'IPChannel', 'wpblog-post' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'IPChannel', 'wpblog-location' ); ?></th>
                     <td>
                     <?php foreach ($allowIpCheckerArr as $checker) : ?>
                         <label style="margin-right: 20px;">
                             <input type="radio" name="ip_channel" value="<?php echo esc_attr($checker); ?>" <?php checked($post_location_ip_checker, $checker); ?>>
-                            <?php esc_html_e('IPChannel-' . $checker, 'wpblog-post'); ?>
+                            <?php esc_html_e('IPChannel-' . $checker, 'wpblog-location'); ?>
                         </label>
                     <?php endforeach; ?>
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'IPAddressFormat', 'wpblog-post' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'IPAddressFormat', 'wpblog-location' ); ?></th>
                     <td>
                         <fieldset>
                             <?php
@@ -197,7 +197,7 @@ function wpblog_post_settings_page() {
                                     $custom = false;
                                 }
                                 echo ' /> <span class="date-time-text format-i18n">';
-                                esc_html_e( $format, 'wpblog-post' );
+                                esc_html_e( $format, 'wpblog-location' );
                                 echo '</span><code>' . $format . "</code></label><br />\n";
                             }
 
@@ -213,7 +213,7 @@ function wpblog_post_settings_page() {
                     </td>
                 </tr>
                 <tr>
-                    <th scope="row"><?php esc_html_e( 'IPAddressCustomForAdmin', 'wpblog-post' ); ?></th>
+                    <th scope="row"><?php esc_html_e( 'IPAddressCustomForAdmin', 'wpblog-location' ); ?></th>
                     <td>
                         <fieldset>
                             <?php
@@ -225,7 +225,7 @@ function wpblog_post_settings_page() {
                                 $custom_ip_address_admin = false;
                             }
                             echo ' /> <span class="date-time-text format-i18n">';
-                            esc_html_e( WpBlogConst::WPBLOG_POST_DEFAULT_FALSE, 'wpblog-post' );
+                            esc_html_e( WpBlogConst::WPBLOG_POST_DEFAULT_FALSE, 'wpblog-location' );
                             echo "</span></label><br />\n";
 
                             echo '<label><input type="radio" name="ip_address_custom_for_admin" id="ip_address_custom_for_admin_radio" value="\c\u\s\t\o\m"';
@@ -237,7 +237,7 @@ function wpblog_post_settings_page() {
                                 '" class="small-text" />';
                             $ipAddressItemStr = esc_html__('Tips');
                             echo "<code>";
-                            esc_html_e("ip_address_custom_for_admin_tips", 'wpblog-post');
+                            esc_html_e("ip_address_custom_for_admin_tips", 'wpblog-location');
                             echo "</code><br />";
                             ?>
                         </fieldset>
@@ -245,7 +245,7 @@ function wpblog_post_settings_page() {
                 </tr>
             </tbody>
         </table>
-        <?php submit_button( __( 'Save Changes', 'wpblog-post' ), 'primary', 'wpblog_post_save_settings' ); ?>
+        <?php submit_button( __( 'Save Changes', 'wpblog-location' ), 'primary', 'wpblog_post_save_settings' ); ?>
     </form>
 </div>
 <?php
