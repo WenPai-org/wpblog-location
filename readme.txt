@@ -1,8 +1,8 @@
-=== WPblog Post ===
+=== Blog Location ===
 Contributors: wpfanyi
 Tags: IP, IP location, location, 定位, 地理位置
 Requires at least: 5.4
-Tested up to: 6.2.2
+Tested up to: 6.5
 Requires PHP: 5.6
 Stable tag: 1.0
 License: GPLv2
@@ -15,8 +15,9 @@ The website platform in China needs to display the user's IP address attribution
 
 More information at [https://wpblog.cn](https://wpblog.cn)
 
+Privacy Terms [https://wpblog.cn/privacy](https://wpblog.cn/privacy)
 
-How to use the WPblog Post:
+How to use the WP Blog Location:
 
 **1.Setting**
 
@@ -46,7 +47,7 @@ We are the first WordPress agency in China, Welcome to China and nice to meet yo
 
 ### Found a bug in this plugin? ###
 
-Please submit issues here: [https://github.com/WenPai-org/wpblog-post/issues](https://github.com/WenPai-org/wpblog-post/issues), we will fix it in the next version, thank you for your feedback!
+Please submit issues here: [https://github.com/WenPai-org/blog-location/issues](https://github.com/WenPai-org/blog-location/issues), we will fix it in the next version, thank you for your feedback!
 
 == Installation ==
 
@@ -55,8 +56,8 @@ Starting with WP Blog Location consists of just two steps: installing and settin
 ###Install WP Blog Location form within WordPress###
 
 1. Visit the plugins page within your dashboard and select ‘Add New’;
-2. Search for ‘WPblog Post’;
-3. Activate WPblog Post from your Plugins page;
+2. Search for ‘Blog Location’;
+3. Activate Blog Location from your Plugins page;
 4. Go to ‘after activation’ below.
 
 

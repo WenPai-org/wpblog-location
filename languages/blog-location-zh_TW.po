@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPblog Post\n"
+"Project-Id-Version: Blog Location\n"
 "POT-Creation-Date: 2023-04-17 23:22+0800\n"
-"PO-Revision-Date: 2023-06-26 10:08+0800\n"
+"PO-Revision-Date: 2024-03-25 03:47+0800\n"
 "Last-Translator: 薇晓朵 <support@weixiaoduo.com>\n"
-"Language-Team: 薇晓朵 <support@weixiaoduo.com>\n"
-"Language: zh_CN\n"
+"Language-Team: 薇曉朵 <support@weixiaoduo.com>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: wpblog-post.php\n"
@@ -21,21 +21,21 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: includes/functions.php:23 includes/functions.php:86 templates/WpBlogTemplate.php:26
+#: includes/functions.php:23 includes/functions.php:86
 msgid "From"
-msgstr "来自"
+msgstr "來自"
 
 #: includes/functions.php:51 includes/functions.php:67
 msgid "Author from"
-msgstr "作者来自"
+msgstr "作者來自"
 
 #: includes/functions.php:101
 msgid "Author From"
-msgstr "作者来自"
+msgstr "作者來自"
 
 #: wpblog-post.php:54
 msgid "IP Location Settings"
-msgstr "IP 位置设置"
+msgstr "IP 位置設定"
 
 #: wpblog-post.php:55
 msgid "IP Location"
@@ -43,51 +43,51 @@ msgstr "IP 位置"
 
 #: wpblog-post.php:63
 msgid "Show author location on post pages"
-msgstr "在文章页面上显示作者位置"
+msgstr "在文章頁面上顯示作者位置"
 
 #: wpblog-post.php:81
 msgid "You do not have sufficient permissions to access this page."
-msgstr "您没有足够的权限访问此页面。"
+msgstr "您沒有足夠的許可權訪問此頁面。"
 
 #: wpblog-post.php:95
 msgid "Settings saved."
-msgstr "设置已保存。"
+msgstr "設定已儲存。"
 
 #: wpblog-post.php:106
 msgid "WordPress Blog User IP address attribution"
-msgstr "文派博客用户IP地址属地"
+msgstr "文派部落格使用者IP地址屬地"
 
 #: wpblog-post.php:107
 msgid ""
 "1. Display WordPress user IP address attribution and city location "
 "information, More information at"
-msgstr "1、显示WordPress用户IP地址归属地和城市位置信息，更多信息可见"
+msgstr "1、顯示WordPress使用者IP地址歸屬地和城市位置資訊，更多資訊可見"
 
 #: wpblog-post.php:108
 msgid ""
 "2. You can display the author or publisher location anywhere on your "
 "website. The shortcode is"
-msgstr "2、您可以在网站上的任何地方显示作者或发布者的定位信息。简码为"
+msgstr "2、您可以在網站上的任何地方顯示作者或釋出者的定位資訊。簡碼為"
 
 #: wpblog-post.php:113
 msgid "Post/pages"
-msgstr "文章/页面"
+msgstr "文章/頁面"
 
 #: wpblog-post.php:114 wpblog-post.php:118
 msgid "Show location"
-msgstr "显示位置"
+msgstr "顯示位置"
 
 #: wpblog-post.php:117
 msgid "Comments"
-msgstr "评论"
+msgstr "評論"
 
 #: wpblog-post.php:122
 msgid "Save Changes"
-msgstr "保存更改"
+msgstr "儲存更改"
 
 #. Plugin Name of the plugin/theme
-msgid "WPblog Post"
-msgstr "文派博客位置"
+msgid "Blog Location"
+msgstr "文派部落格位置"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wpblog.cn/download"
@@ -97,52 +97,52 @@ msgstr "https://wpblog.cn/download"
 msgid ""
 "Display user account IP address attribution information in comments and "
 "articles."
-msgstr "在评论和文章中显示用户帐户 IP 地址属地信息。"
+msgstr "在評論和文章中顯示使用者帳戶 IP 地址屬地資訊。"
 
 #. Author of the plugin/theme
 msgid "WPfanyi"
-msgstr "文派翻译"
+msgstr "文派翻譯"
 
 #. Author URI of the plugin/theme
 msgid "https://wpfanyi.com"
 msgstr "https://wpfanyi.com/"
 
-#~ msgid "WordPress Blog Location Settings"
-#~ msgstr "文派博客位置设置"
-
 #. IP
 msgid "IPChannel"
-msgstr "IP查询渠道"
+msgstr "IP查詢頻道"
 
 msgid "IPChannel-local"
-msgstr "本地数据库"
+msgstr "本地資料庫"
 
 msgid "IPChannel-ipapi"
 msgstr "API"
 
 msgid "IPAddressFormat"
-msgstr "IP地址格式"
+msgstr "IP位址格式"
 
 msgid "city"
 msgstr "城市"
 
 msgid "country"
-msgstr "国家/地区"
+msgstr "國家"
 
 msgid "region"
 msgstr "省份"
 
 msgid "country, region, city"
-msgstr "国家/地区, 省份, 城市"
+msgstr "國家/地區, 省份, 城市"
 
 msgid "city, region, country"
-msgstr "城市, 省份, 国家/地区"
+msgstr "城市, 省份, 國家/地區"
 
 msgid "IPAddressCustomForAdmin"
-msgstr "管理员自定义IP归属地"
+msgstr "管理員自訂IP歸屬地"
 
 msgid "ip_address_custom_for_admin_tips"
-msgstr "例如：广州, 广东, 中国"
+msgstr "例如：廣州, 廣東, 中國"
 
 msgid "f/a/l/s/e"
-msgstr "关闭"
+msgstr "關閉"
+
+#~ msgid "WordPress Blog Location Settings"
+#~ msgstr "文派部落格位置設定"
