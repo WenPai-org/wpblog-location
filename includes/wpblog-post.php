@@ -105,7 +105,7 @@ function wpblog_post_settings_page() {
     ];
     
     // Handle form submission
-    if ( isset( $_POST['wpblog_post_save_settings'] ) && isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], $nonce) ) {
+    if ( wp_verify_nonce($_POST['_wpnonce'], $nonce) && isset( $_POST['wpblog_post_save_settings'] ) ) {
         $show_post_location = isset($_POST['show_post_location']) ? true : false;
         $show_comment_location = isset($_POST['show_comment_location']) ? true : false;
         $show_author_location = isset($_POST['wpblog_post_show_author_location']) ? true : false;
@@ -149,7 +149,7 @@ function wpblog_post_settings_page() {
         WpBlogConst::WPBLOG_POST_DEFAULT_FALSE
     );
 
-    $nonceStr = wp_create_nonce( $nonce );
+    $nonce = wp_create_nonce( $nonce );
 
     // Render HTML
 ?>
@@ -159,7 +159,7 @@ function wpblog_post_settings_page() {
     <p><?php esc_html_e( '1. Display WordPress user IP address attribution and city location information, More information at', 'wpblog-post' ); ?> <a href="https://wpblog.cn" target="_blank" rel="noopener">WPblog.cn</a></p>
     <p><?php esc_html_e( '2. You can display the author or publisher location anywhere on your website. The shortcode is', 'wpblog-post' ); ?> <code>[wpblog_post_location]</code> <code>[wpblog_author_location]</code> </p>
     <form method="post" action="">
-        <input type="hidden" name="_wpnonce" value="<?php echo $nonceStr; ?>"/>
+        <input type="hidden" name="_wpnonce" value="<?php echo $nonce; ?>"/>
         <table class="form-table">
             <tbody>
                 <tr>

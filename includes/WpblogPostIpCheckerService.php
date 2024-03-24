@@ -1,7 +1,11 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 // ip checker service
-class IpCheckerService
+class WpblogPostIpCheckerService
 {
     private static $instance;
     private $config;
